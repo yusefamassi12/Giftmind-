@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mystery Gift Quiz - GiftMind.ai</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgiftmindh9519back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background text-text-primary min-h-screen">
+    <!-- Simplified Header -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Back Button & Logo -->
+                <div class="flex items-center space-x-4">
+                    <button id="back-btn" class="text-text-secondary hover:text-primary transition-colors p-2 rounded-lg hover:bg-primary-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <a href="homepage_landing.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L20.5 10.5L30 12L22 20L24 30L16 25L8 30L10 20L2 12L11.5 10.5L16 2Z"/>
+                        </svg>
+                        <span class="text-xl font-bold text-primary">GiftMind.ai</span>
+                    </a>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="flex items-center space-x-3">
+                    <span class="text-sm text-text-secondary font-medium">Question <span id="current-question">1</span> of <span id="total-questions">8</span></span>
+                    <div class="w-24 h-2 bg-border rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-primary transition-all duration-300 ease-out" style="width: 12.5%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Quiz Container -->
+    <main class="pt-24 pb-8 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
+        <div class="max-w-2xl mx-auto w-full">
+            <!-- Quiz Card -->
+            <div id="quiz-container" class="card-progressive min-h-96">
+                <!-- Question 1: Relationship -->
+                <div class="quiz-question active" data-question="1">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-3">Who are you shopping for?</h2>
+                        <p class="text-text-secondary">This helps us understand the relationship dynamic</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-value="family">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <div class="font-semibold">Family Member</div>
+                                    <div class="text-sm text-text-secondary">Parent, sibling, or relative</div>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option" data-value="friend">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <div class="font-semibold">Close Friend</div>
+                                    <div class="text-sm text-text-secondary">Best friend or good friend</div>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option" data-value="romantic">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-error/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <div class="font-semibold">Romantic Partner</div>
+                                    <div class="text-sm text-text-secondary">Spouse, boyfriend, or girlfriend</div>
+                                </div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option" data-value="colleague">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-warning/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 002 2M8 6v2a2 2 0 002 2h4a2 2 0 002-2V6m0 0V4a2 2 0 00-2-2H10a2 2 0 00-2 2v2"/>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <div class="font-semibold">Colleague</div>
+                                    <div class="text-sm text-text-secondary">Coworker or professional contact</div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2: Occasion -->
+                <div class="quiz-question" data-question="2">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-3">What's the occasion?</h2>
+                        <p class="text-text-secondary">Different occasions call for different types of gifts</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-value="birthday">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0A1.5 1.5 0 013 15.546V12a9 9 0 0118 0v3.546z"/>
+                                    </svg>
+                                </div>
+                                <div class="font-semibold">Birthday</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option" data-value="holiday">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-error/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="font-semibold">Holiday</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option" data-value="anniversary">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="font-semibold">Anniversary</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option" data-value="just-because">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="font-semibold">Just Because</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3: Budget -->
+                <div class="quiz-question" data-question="3">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-3">What's your budget range?</h2>
+                        <p class="text-text-secondary">This helps us suggest gifts within your comfort zone</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-3">
+                        <button class="quiz-option text-left" data-value="under-25">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-semibold">Under $25</div>
+                                    <div class="text-sm text-text-secondary">Thoughtful and affordable</div>
+                                </div>
+                                <div class="text-2xl">💝</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option text-left" data-value="25-50">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-semibold">$25 - $50</div>
+                                    <div class="text-sm text-text-secondary">Nice quality gifts</div>
+                                </div>
+                                <div class="text-2xl">🎁</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option text-left" data-value="50-100">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-semibold">$50 - $100</div>
+                                    <div class="text-sm text-text-secondary">Premium options</div>
+                                </div>
+                                <div class="text-2xl">🌟</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option text-left" data-value="over-100">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-semibold">Over $100</div>
+                                    <div class="text-sm text-text-secondary">Luxury and special items</div>
+                                </div>
+                                <div class="text-2xl">💎</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 4: Interests -->
+                <div class="quiz-question" data-question="4">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-3">What are their main interests?</h2>
+                        <p class="text-text-secondary">Select all that apply - this helps personalize recommendations</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button class="quiz-option-multi" data-value="tech">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">📱</div>
+                                <div class="font-medium text-sm">Technology</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="fitness">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">💪</div>
+                                <div class="font-medium text-sm">Fitness</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="cooking">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">👨‍🍳</div>
+                                <div class="font-medium text-sm">Cooking</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="reading">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">📚</div>
+                                <div class="font-medium text-sm">Reading</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="art">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">🎨</div>
+                                <div class="font-medium text-sm">Art & Crafts</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="music">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">🎵</div>
+                                <div class="font-medium text-sm">Music</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="travel">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">✈️</div>
+                                <div class="font-medium text-sm">Travel</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="gaming">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">🎮</div>
+                                <div class="font-medium text-sm">Gaming</div>
+                            </div>
+                        </button>
+                        
+                        <button class="quiz-option-multi" data-value="fashion">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">👗</div>
+                                <div class="font-medium text-sm">Fashion</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading Screen -->
+                <div id="loading-screen" class="hidden text-center py-16">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                        <svg class="w-8 h-8 text-primary animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">AI is analyzing your preferences...</h3>
+                    <p class="text-text-secondary mb-6">This will just take a moment</p>
+                    <div class="max-w-xs mx-auto">
+                        <div class="h-2 bg-border rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full animate-pulse" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Screen -->
+                <div id="results-screen" class="hidden">
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-3">Perfect Matches Found!</h2>
+                        <p class="text-text-secondary">Based on your answers, here are our AI-powered recommendations</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Gift Recommendation 1 -->
+                        <div class="card-progressive border border-border">
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <div class="sm:w-32 h-32 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1000&auto=format&fit=crop" alt="Wireless Headphones" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h3 class="font-semibold text-lg">Premium Wireless Headphones</h3>
+                                        <span class="text-lg font-bold text-primary">$79.99</span>
+                                    </div>
+                                    <p class="text-text-secondary text-sm mb-3">Perfect for music lovers and tech enthusiasts. High-quality sound with noise cancellation.</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="flex text-yellow-400">
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                            </div>
+                                            <span class="text-sm text-text-secondary">4.8 (2,341 reviews)</span>
+                                        </div>
+                                        <a href="#" class="btn-primary text-sm px-4 py-2">View Product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gift Recommendation 2 -->
+                        <div class="card-progressive border border-border">
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <div class="sm:w-32 h-32 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://images.pixabay.com/photo/2017/07/31/11/21/people-2557396_1280.jpg?q=80&w=1000&auto=format&fit=crop" alt="Fitness Tracker" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?q=80&w=1000&auto=format&fit=crop'; this.onerror=null;" />
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-start justify-between mb-2">
+                                        <h3 class="font-semibold text-lg">Smart Fitness Tracker</h3>
+                                        <span class="text-lg font-bold text-primary">$45.99</span>
+                                    </div>
+                                    <p class="text-text-secondary text-sm mb-3">Great for fitness enthusiasts. Tracks steps, heart rate, and sleep patterns with smartphone integration.</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="flex text-yellow-400">
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                                <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 20 20">
+                                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                                </svg>
+                                            </div>
+                                            <span class="text-sm text-text-secondary">4.6 (1,892 reviews)</span>
+                                        </div>
+                                        <a href="#" class="btn-primary text-sm px-4 py-2">View Product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center space-y-4">
+                        <p class="text-text-secondary">Want more personalized recommendations?</p>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                            <a href="user_registration.html" class="btn-primary">Create Free Account</a>
+                            <button id="retake-quiz" class="btn-morphic bg-surface border border-border text-text-primary hover:bg-primary-50">Take Quiz Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div id="quiz-controls" class="flex items-center justify-between mt-8">
+                <button id="prev-btn" class="btn-morphic bg-surface border border-border text-text-primary hover:bg-primary-50 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    Previous
+                </button>
+                
+                <button id="next-btn" class="btn-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Next
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .quiz-question {
+            display: none;
+        }
+        
+        .quiz-question.active {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .quiz-option, .quiz-option-multi {
+            @apply w-full p-4 border-2 border-border rounded-lg text-left transition-all duration-200 hover:border-primary hover:bg-primary-50;
+        }
+        
+        .quiz-option:hover, .quiz-option-multi:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+        
+        .quiz-option.selected, .quiz-option-multi.selected {
+            @apply border-primary bg-primary-50;
+        }
+        
+        .quiz-option-multi.selected {
+            @apply bg-primary text-white border-primary;
+        }
+    </style>
+
+    <script>
+        class QuizManager {
+            constructor() {
+                this.currentQuestion = 1;
+                this.totalQuestions = 4;
+                this.answers = {};
+                this.multiSelectAnswers = [];
+                
+                this.initializeElements();
+                this.bindEvents();
+                this.updateUI();
+            }
+            
+            initializeElements() {
+                this.currentQuestionSpan = document.getElementById('current-question');
+                this.totalQuestionsSpan = document.getElementById('total-questions');
+                this.progressBar = document.getElementById('progress-bar');
+                this.prevBtn = document.getElementById('prev-btn');
+                this.nextBtn = document.getElementById('next-btn');
+                this.backBtn = document.getElementById('back-btn');
+                this.quizControls = document.getElementById('quiz-controls');
+                this.loadingScreen = document.getElementById('loading-screen');
+                this.resultsScreen = document.getElementById('results-screen');
+                this.retakeBtn = document.getElementById('retake-quiz');
+            }
+            
+            bindEvents() {
+                // Navigation buttons
+                this.prevBtn.addEventListener('click', () => this.previousQuestion());
+                this.nextBtn.addEventListener('click', () => this.nextQuestion());
+                this.backBtn.addEventListener('click', () => this.goBack());
+                this.retakeBtn.addEventListener('click', () => this.restartQuiz());
+                
+                // Quiz options
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.addEventListener('click', (e) => this.selectOption(e));
+                });
+                
+                // Multi-select options
+                document.querySelectorAll('.quiz-option-multi').forEach(option => {
+                    option.addEventListener('click', (e) => this.selectMultiOption(e));
+                });
+            }
+            
+            selectOption(e) {
+                const question = e.target.closest('.quiz-question');
+                const questionNum = parseInt(question.dataset.question);
+                const value = e.target.closest('.quiz-option').dataset.value;
+                
+                // Remove previous selection
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selection to clicked option
+                e.target.closest('.quiz-option').classList.add('selected');
+                
+                // Store answer
+                this.answers[questionNum] = value;
+                
+                // Enable next button
+                this.nextBtn.disabled = false;
+            }
+            
+            selectMultiOption(e) {
+                const option = e.target.closest('.quiz-option-multi');
+                const value = option.dataset.value;
+                
+                option.classList.toggle('selected');
+                
+                if (option.classList.contains('selected')) {
+                    if (!this.multiSelectAnswers.includes(value)) {
+                        this.multiSelectAnswers.push(value);
+                    }
+                } else {
+                    this.multiSelectAnswers = this.multiSelectAnswers.filter(item => item !== value);
+                }
+                
+                // Enable next button if at least one option is selected
+                this.nextBtn.disabled = this.multiSelectAnswers.length === 0;
+                
+                // Store answers
+                this.answers[4] = this.multiSelectAnswers;
+            }
+            
+            nextQuestion() {
+                if (this.currentQuestion < this.totalQuestions) {
+                    this.hideCurrentQuestion();
+                    this.currentQuestion++;
+                    this.showCurrentQuestion();
+                    this.updateUI();
+                } else {
+                    this.showResults();
+                }
+            }
+            
+            previousQuestion() {
+                if (this.currentQuestion > 1) {
+                    this.hideCurrentQuestion();
+                    this.currentQuestion--;
+                    this.showCurrentQuestion();
+                    this.updateUI();
+                }
+            }
+            
+            hideCurrentQuestion() {
+                const current = document.querySelector('.quiz-question.active');
+                if (current) {
+                    current.classList.remove('active');
+                }
+            }
+            
+            showCurrentQuestion() {
+                const next = document.querySelector(`[data-question="${this.currentQuestion}"]`);
+                if (next) {
+                    next.classList.add('active');
+                }
+            }
+            
+            updateUI() {
+                // Update progress
+                this.currentQuestionSpan.textContent = this.currentQuestion;
+                this.totalQuestionsSpan.textContent = this.totalQuestions;
+                
+                const progress = (this.currentQuestion / this.totalQuestions) * 100;
+                this.progressBar.style.width = `${progress}%`;
+                
+                // Update button states
+                this.prevBtn.disabled = this.currentQuestion === 1;
+                
+                // Check if current question is answered
+                const isAnswered = this.currentQuestion === 4 ? 
+                    this.multiSelectAnswers.length > 0 : 
+                    this.answers[this.currentQuestion];
+                    
+                this.nextBtn.disabled = !isAnswered;
+                
+                // Update next button text
+                this.nextBtn.innerHTML = this.currentQuestion === this.totalQuestions ? 
+                    'Get Results <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>' :
+                    'Next <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>';
+            }
+            
+            showResults() {
+                // Hide quiz questions and controls
+                document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+                this.quizControls.style.display = 'none';
+                
+                // Show loading screen
+                this.loadingScreen.classList.remove('hidden');
+                
+                // Simulate AI processing
+                setTimeout(() => {
+                    this.loadingScreen.classList.add('hidden');
+                    this.resultsScreen.classList.remove('hidden');
+                }, 2000);
+            }
+            
+            goBack() {
+                if (this.resultsScreen.classList.contains('hidden')) {
+                    // Go back to homepage
+                    window.location.href = 'homepage_landing.html';
+                } else {
+                    // Go back to quiz
+                    this.restartQuiz();
+                }
+            }
+            
+            restartQuiz() {
+                // Reset state
+                this.currentQuestion = 1;
+                this.answers = {};
+                this.multiSelectAnswers = [];
+                
+                // Reset UI
+                this.resultsScreen.classList.add('hidden');
+                this.loadingScreen.classList.add('hidden');
+                this.quizControls.style.display = 'flex';
+                
+                // Clear selections
+                document.querySelectorAll('.quiz-option, .quiz-option-multi').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Show first question
+                this.showCurrentQuestion();
+                this.updateUI();
+            }
+        }
+        
+        // Initialize quiz when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new QuizManager();
+        });
+    </script>
+</body>
+</html>
